@@ -18,12 +18,12 @@ class App extends Component {
       {
         colonId:uuid.v4(),
         title: 'Head 1',
-        notes: ['Not 1', 'Not 2']
+        notes: []
       },
       {
         colonId:uuid.v4(),
         title: 'Head 2',
-        notes: ['Not 1', 'Not 2']
+        notes: []
       }
     ]});
   }

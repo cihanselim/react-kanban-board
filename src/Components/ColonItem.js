@@ -17,14 +17,9 @@ class ColonItem extends Component {
     this.props.onDelete(colonId);
   }
 
-  getProjects(){
-    this.setState({projects: [
-      
-    ]});
-  }
-
-  componentWillMount(){
-    this.getProjects();
+  changeColonName(colonId){
+    //this.props.colon.title = "New Head"
+    //console.log(this.props.project)
   }
 
   handleAddProject(project){
@@ -41,7 +36,7 @@ class ColonItem extends Component {
   }
 
   render() {
-
+   
     const colonStyle = {
       heigth: this.state.projects.length
     }
@@ -51,6 +46,7 @@ class ColonItem extends Component {
     }
 
     return (
+
       <div className="col-md-4" style={colon2Style}>
         <div className="row-fluid">
           <div className="panel panel-default" >
@@ -67,7 +63,7 @@ class ColonItem extends Component {
                         <span className="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
                       </button>
                     </a>
-                    <a href="#" onClick={this.deleteColon.bind(this, this.props.colon.colonId)}>
+                    <a href="#" onClick={this.changeColonName.bind(this, this.props.colon.colonId)}>
                       <button className="btn btn-default btn-xs" type="submit">
                         <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                       </button>

@@ -37,7 +37,7 @@ class AddProject extends Component {
           <input className="form-control" placeholder="Note Title" ref="title"></input>
         </div>
         <div className="col-md-12" style={formStyle}>
-          <input className="form-control" placeholder="Note" ref="category"></input>
+          <textarea className="form-control" placeholder="Note" ref="category"></textarea>
         </div>
         <div className="col-md-12" style={formStyle}>
           <span className="pull-right">

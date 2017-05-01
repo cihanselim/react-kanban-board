@@ -11,12 +11,22 @@ class Projects extends Component {
     let projectItems;
     if(this.props.projects){
       projectItems = this.props.projects.map(project => {
-        //console.log(project);
         return (
           <ProjectItem onDelete={this.deleteProject.bind(this)} key={project.title} project={project} />
         );
       });
     }
+
+ //let projectItemss;
+ //   if(this.props.projects){
+ //     projectItemss = this.props.projects.map(project => {
+ //       return (
+ //         <ProjectItem onEdit={this.editNote.bind(this)} key={project.title} project={project} />
+ //       );
+ //     });
+ //   }
+
+
     return (
       <div className="Projects">
         {projectItems}
