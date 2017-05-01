@@ -27,20 +27,24 @@ class AddProject extends Component {
 
   render() {
   
+    const formStyle = {
+      marginTop: "5px"
+    }
+
     return (
-    <form onSubmit={this.handleSubmit.bind(this)}>
-      <div className="col-md-12">
-        <input className="form-control" placeholder="Note Title" ref="title"></input>
-      </div>
-      <div className="col-md-12">
-        <input className="form-control" placeholder="Note" ref="category"></input>
-      </div>
-      <div className="col-md-12">
-        <span className="pull-right">
-        <button className="btn btn-primary" type="submit">SAVE</button>
-        </span>
-      </div>
-    </form>
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <div className="col-md-12" style={formStyle}>
+          <input className="form-control" placeholder="Note Title" ref="title"></input>
+        </div>
+        <div className="col-md-12" style={formStyle}>
+          <input className="form-control" placeholder="Note" ref="category"></input>
+        </div>
+        <div className="col-md-12" style={formStyle}>
+          <span className="pull-right">
+          <button className="btn btn-primary" type="submit">Add Note</button>
+          </span>
+        </div>
+      </form>
     );
   }
 }

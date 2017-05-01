@@ -4,6 +4,7 @@ import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
 import './App.css';
 
+import Header from './Components/Header'
 class App extends Component {
   constructor(){
     super();
@@ -22,11 +23,6 @@ class App extends Component {
       {
         colonId:uuid.v4(),
         title: 'Head 2',
-        notes: ['Not 1', 'Not 2']
-      },
-      {
-        colonId:uuid.v4(),
-        title: 'Head 3',
         notes: ['Not 1', 'Not 2']
       }
     ]});
@@ -55,9 +51,11 @@ class App extends Component {
     return (
 
       <div className="App">
+        <Header />
+        <div className="container">
         <AddColon addColon={this.handleAddColon.bind(this)} />
         <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)} />
-        
+        </div>
       </div>
     );
   }
