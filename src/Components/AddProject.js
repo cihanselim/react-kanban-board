@@ -44,6 +44,7 @@ class AddProject extends Component {
           <button className="btn btn-primary" type="submit">Add Note</button>
           </span>
         </div>
+        
       </form>
     );
   }

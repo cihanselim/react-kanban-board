@@ -3,8 +3,13 @@ import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
 
 class Projects extends Component {
+  
   deleteProject(id){
     this.props.onDelete(id);
+  }
+
+  editNote(id){
+    this.props.onEdit(id);
   }
 
   render() {
@@ -12,20 +17,10 @@ class Projects extends Component {
     if(this.props.projects){
       projectItems = this.props.projects.map(project => {
         return (
-          <ProjectItem onDelete={this.deleteProject.bind(this)} key={project.title} project={project} />
+          <ProjectItem onDelete={this.deleteProject.bind(this)} onEdit={this.editNote.bind(this)} key={project.title} project={project} />
         );
       });
     }
-
- //let projectItemss;
- //   if(this.props.projects){
- //     projectItemss = this.props.projects.map(project => {
- //       return (
- //         <ProjectItem onEdit={this.editNote.bind(this)} key={project.title} project={project} />
- //       );
- //     });
- //   }
-
 
     return (
       <div className="Projects">
@@ -37,7 +32,8 @@ class Projects extends Component {
 
 Projects.propTypes = {
   projects: React.PropTypes.array,
-  onDelete: React.PropTypes.func
+  onDelete: React.PropTypes.func,
+  onEdit: React.PropTypes.func
 }
 
 export default Projects;

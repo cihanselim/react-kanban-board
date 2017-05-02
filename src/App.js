@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
-import './App.css';
+
 
 import Header from './Components/Header'
 class App extends Component {
@@ -17,12 +17,17 @@ class App extends Component {
     this.setState({colons: [
       {
         colonId:uuid.v4(),
-        title: 'Head 1',
+        title: 'todo',
         notes: []
       },
       {
         colonId:uuid.v4(),
-        title: 'Head 2',
+        title: 'done',
+        notes: []
+      },
+      {
+        colonId:uuid.v4(),
+        title: 'other',
         notes: []
       }
     ]});
@@ -36,6 +41,7 @@ class App extends Component {
     let colons = this.state.colons;
     colons.push(colon);
     this.setState({colons:colons});
+
   }
 
   handleDeleteColon(colonId){
@@ -45,8 +51,6 @@ class App extends Component {
     this.setState({colons:colons});
   }
 
-  
-
   render() {
     return (
 
@@ -54,7 +58,7 @@ class App extends Component {
         <Header />
         <div className="container">
         <AddColon addColon={this.handleAddColon.bind(this)} />
-        <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)} />
+        <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)}/>
         </div>
       </div>
     );

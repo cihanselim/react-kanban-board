@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
-  deleteProject(id){
-    this.props.onDelete(id);
-  }
 
   render() {
 

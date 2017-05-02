@@ -11,7 +11,6 @@ class Colons extends Component {
     let colonItems;
     if(this.props.colons){
       colonItems = this.props.colons.map(colon => {
-        //console.log(project);
         return (
           <ColonItem onDelete={this.deleteColon.bind(this)} key={colon.title} colon={colon} />
         );

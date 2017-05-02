@@ -26,10 +26,6 @@ class AddColon extends Component {
 
   render() {
 
-    const formStyle = {
-      marginBottom: "20px"
-    }
-
     return (
     <div className="container">
       <div className="row">
