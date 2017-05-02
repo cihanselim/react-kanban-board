@@ -52,7 +52,6 @@ class ColonItem extends Component {
 
   saveJson(){
     var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state, null, 2));
-    
     if (this.state.projects.length > 0){
         $( "#download" ).empty();
         $('<a href="data:' + data + '" download="data.json" title="Download all notes as JSON">JSON</a>').appendTo('#download');
@@ -108,7 +107,7 @@ class ColonItem extends Component {
                     </a>
 
                     <a href="#" >
-                      <button  onClick={this.saveJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Download all notes as JSON">
+                      <button onClick={this.saveJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Download all notes as JSON">
                        <span id="download" className="glyphicon glyphicon-save" aria-hidden="true"></span>
                       </button>
                     </a>
