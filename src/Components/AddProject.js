@@ -18,21 +18,22 @@ class AddProject extends Component {
         title: this.refs.title.value,
         category: this.refs.category.value
       }}, function(){
-        //console.log(this.state);
         this.props.addProject(this.state.newProject);
       });
     }
     e.preventDefault();
+    document.getElementById("form").reset();
+
   }
 
   render() {
-  
+
     const formStyle = {
       marginTop: "5px"
     }
 
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form id="form" onSubmit={this.handleSubmit.bind(this)}>
         <div className="col-md-12" style={formStyle}>
           <input className="form-control" placeholder="Note Title" ref="title"></input>
         </div>

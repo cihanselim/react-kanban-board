@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
-
-
 import Header from './Components/Header'
+
 class App extends Component {
   constructor(){
     super();
@@ -18,30 +17,33 @@ class App extends Component {
       {
         colonId:uuid.v4(),
         title: 'todo',
-        notes: []
+        projects: []
       },
       {
         colonId:uuid.v4(),
         title: 'done',
-        notes: []
+        projects: []
       },
       {
         colonId:uuid.v4(),
         title: 'other',
-        notes: []
+        projects: []
       }
     ]});
   }
 
   componentWillMount(){
-    this.getColons();
+    this.getColons(); 
+
   }
 
   handleAddColon(colon){
+
     let colons = this.state.colons;
     colons.push(colon);
     this.setState({colons:colons});
 
+    //console.log(this.state.colons.colonId)
   }
 
   handleDeleteColon(colonId){
@@ -49,6 +51,7 @@ class App extends Component {
     let index = colons.findIndex(x => x.colonId === colonId);
     colons.splice(index, 1);
     this.setState({colons:colons});
+
   }
 
   render() {
@@ -57,12 +60,16 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-        <AddColon addColon={this.handleAddColon.bind(this)} />
+        <AddColon colons={this.state.colons} addColon={this.handleAddColon.bind(this)} />
         <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)}/>
         </div>
       </div>
     );
   }
+}
+
+App.propTypes = {
+  colon: React.PropTypes.object
 }
 
 export default App;

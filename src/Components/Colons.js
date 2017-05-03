@@ -8,11 +8,12 @@ class Colons extends Component {
   }
 
   render() {
+
     let colonItems;
     if(this.props.colons){
       colonItems = this.props.colons.map(colon => {
         return (
-          <ColonItem onDelete={this.deleteColon.bind(this)} key={colon.title} colon={colon} />
+          <ColonItem onDelete={this.deleteColon.bind(this)} key={colon.colonId} colon={colon} />
         );
       });
     }

@@ -13,11 +13,13 @@ class Projects extends Component {
   }
 
   render() {
+
+    
     let projectItems;
     if(this.props.projects){
       projectItems = this.props.projects.map(project => {
         return (
-          <ProjectItem onDelete={this.deleteProject.bind(this)} onEdit={this.editNote.bind(this)} key={project.title} project={project} />
+          <ProjectItem onDelete={this.deleteProject.bind(this)} onEdit={this.editNote.bind(this)} key={project.id} project={project} />
         );
       });
     }

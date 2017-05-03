@@ -13,8 +13,8 @@ class ProjectItem extends Component {
     this.state = {
       style: [{
         backgroundColor: 'white',
-        labelName: 'NOONE',
-        labelColor: 'white'
+        labelName: 'NO-LABEL',
+        labelColor: 'White'
       }]
       
     };
@@ -24,7 +24,6 @@ class ProjectItem extends Component {
   deleteProject(id){
     this.props.onDelete(id);
   }
-  //console.log(this.props.project.title)
 
   editNote(id){
     this.props.onEdit(id);
