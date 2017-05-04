@@ -20,16 +20,17 @@ class ColonItem extends Component {
   }
 
   handleAddProject(project){
-    //console.log(this.props)
-    let projects = this.state.projects;
+    
+    let projects = this.props.colon.projects;
     projects.push(project);
     //for data persistence
     localStorage.setItem('projects', JSON.stringify(projects));
     this.setState({projects:projects});
+    console.log(this.props)
   }
 
   handleDeleteProject(id){
-    let projects = this.state.projects;
+    let projects = this.props.colon.projects;
     let index = projects.findIndex(x => x.id === id);
     projects.splice(index, 1);
     localStorage.setItem('projects', JSON.stringify(projects));
@@ -37,7 +38,7 @@ class ColonItem extends Component {
   }
 
   handleEditNote(id){
-    let notes = this.state.projects;
+    let notes = this.props.colon.projects;
     let index = notes.findIndex(x => x.id === id);
     var newTitle = prompt("Please enter new title: ", notes[index].title);
     var newNote = prompt("Please enter new note: ", notes[index].category);
@@ -48,7 +49,7 @@ class ColonItem extends Component {
   }
 
   loadJson(){
-    let projects = this.state.projects;
+    let projects = this.props.colon.projects;
     var json = require('../json/data.json');
     for (var i=0; i<json.projects.length; i++){
       projects.push(json.projects[i]);
@@ -58,9 +59,9 @@ class ColonItem extends Component {
   }
 
   saveJson(){
-    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state, null, 2));
-    //console.log(data)
-    if (this.state.projects.length > 0){
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.props.colon.projects, null, 2));
+    console.log(data)
+    if (this.props.colon.projects.length > 0){
         $( "#download" ).empty();
         $('<a href="data:' + data + '" download="data.json" title="Download all notes as JSON">JSON</a>').appendTo('#download');
     }
@@ -69,7 +70,7 @@ class ColonItem extends Component {
   render() {
    
     const colonStyle = {
-      heigth: this.state.projects.length
+      heigth: this.props.colon.projects.length
     }
 
     const colon2Style = {
@@ -80,7 +81,7 @@ class ColonItem extends Component {
       textTransform: "uppercase"
     }    
 
-    var persistence = JSON.parse(localStorage.getItem('projects')) || [];
+    //var persistence = JSON.parse(localStorage.getItem('projects')) || [];
     //projects={persistence}
 
     return (
@@ -97,7 +98,7 @@ class ColonItem extends Component {
 
                   <a href="#">
                     <button className="btn btn-default btn-xs" type="submit" title="Notes">
-                     {this.state.projects.length}
+                     {this.props.colon.projects.length}
                     </button>
                   </a>
 
@@ -120,7 +121,7 @@ class ColonItem extends Component {
                   </a>
                 </span>
               </div>
-              <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} onEdit={this.handleEditNote.bind(this)} />
+              <Projects projects={this.props.colon.projects} onDelete={this.handleDeleteProject.bind(this)} onEdit={this.handleEditNote.bind(this)} />
               <AddProject addProject={this.handleAddProject.bind(this)} />
             </div>
           </div>

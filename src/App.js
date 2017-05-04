@@ -33,8 +33,10 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.getColons(); 
+    this.getColons();
+  }
 
+  componentDidMount(){
   }
 
   handleAddColon(colon){

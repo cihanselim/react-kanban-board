@@ -23,7 +23,6 @@ class AddProject extends Component {
     }
     e.preventDefault();
     document.getElementById("form").reset();
-
   }
 
   render() {
