@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
+//import uuid from 'uuid';
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
 import Header from './Components/Header'
@@ -13,45 +13,35 @@ class App extends Component {
   }
 
   getColons(){
-    this.setState({colons: [
-      {
-        colonId:uuid.v4(),
-        title: 'todo',
-        projects: []
-      },
-      {
-        colonId:uuid.v4(),
-        title: 'done',
-        projects: []
-      },
-      {
-        colonId:uuid.v4(),
-        title: 'other',
-        projects: []
-      }
-    ]});
+    const persistence = JSON.parse(localStorage.getItem('persistence')) || [];
+    for (var i=0;i<persistence.length;i++){
+      this.state.colons.push(persistence[i]);
+    }
+    
+    this.setState({colons: persistence});
+    //console.log(this.state.colons)
   }
 
   componentWillMount(){
     this.getColons();
-  }
-
-  componentDidMount(){
+  
   }
 
   handleAddColon(colon){
 
     let colons = this.state.colons;
     colons.push(colon);
+    //console.log(colons)
+    localStorage.setItem('persistence', JSON.stringify(colons));
     this.setState({colons:colons});
-
-    //console.log(this.state.colons.colonId)
   }
+
 
   handleDeleteColon(colonId){
     let colons = this.state.colons;
     let index = colons.findIndex(x => x.colonId === colonId);
     colons.splice(index, 1);
+    localStorage.setItem('persistence', JSON.stringify(colons));
     this.setState({colons:colons});
 
   }
@@ -62,8 +52,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-        <AddColon colons={this.state.colons} addColon={this.handleAddColon.bind(this)} />
-        <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)}/>
+        <AddColon addColon={this.handleAddColon.bind(this)}/>
+        <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)} />
         </div>
       </div>
     );

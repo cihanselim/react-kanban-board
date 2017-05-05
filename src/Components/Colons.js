@@ -7,6 +7,13 @@ class Colons extends Component {
     this.props.onDelete(colonId);
   }
 
+  componentWillMount(){
+
+    
+    //console.log(this.props.colons)
+  
+  }
+
   render() {
 
     let colonItems;

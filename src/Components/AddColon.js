@@ -27,29 +27,9 @@ class AddColon extends Component {
 
     //console.log(this.state.newColon)
   }
-/*
-  handleNoteSubmit(){
-    console.log(this.state.newColon.projects)
-    var titles = []
-    for (var i =0; i<this.props.colons.length; i++){
-      titles[i] = this.props.colons[i].title;
-    }
 
-    var title = prompt("Choose a colon and write it down: "+ titles)
-    var msg = prompt("MESAJ: ")
-    let projects = this.state.newColon.projects;
-    if (title == this.state.newColon.title){
-      projects.push(msg);
-      this.setState({projects:projects});
-    }
-    else {
-      console.log("nooo")
-    }
-    console.log(this.props.colons)
-  }
-*/
+
   render() {
-
     return (
     <div className="container">
       <div className="row">

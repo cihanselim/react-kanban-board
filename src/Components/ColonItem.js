@@ -6,34 +6,27 @@ import $ from 'jquery';
 
 class ColonItem extends Component {
 
-  constructor(){
-    super();
-
-    this.state = {
-      projects: []
-    }
-
-  }
-
   deleteColon(colonId){
     this.props.onDelete(colonId);
   }
 
-  handleAddProject(project){
-    
+  componentWillMount(){
+    //console.log(this.props.colon)
+  }
+
+  handleAddProject(project){  
     let projects = this.props.colon.projects;
     projects.push(project);
-    //for data persistence
-    localStorage.setItem('projects', JSON.stringify(projects));
+    //localStorage.setItem('persistence', JSON.stringify([this.props.colon]));
     this.setState({projects:projects});
-    console.log(this.props)
+    //console.log(localStorage.getItem('persistence', JSON.stringify([colons])))
+    
   }
 
   handleDeleteProject(id){
     let projects = this.props.colon.projects;
     let index = projects.findIndex(x => x.id === id);
     projects.splice(index, 1);
-    localStorage.setItem('projects', JSON.stringify(projects));
     this.setState({projects:projects});
   }
 
@@ -44,7 +37,6 @@ class ColonItem extends Component {
     var newNote = prompt("Please enter new note: ", notes[index].category);
     notes[index].title = newTitle
     notes[index].category = newNote
-    localStorage.setItem('projects', JSON.stringify(notes));
     this.setState({projects:notes});
   }
 
@@ -60,7 +52,6 @@ class ColonItem extends Component {
 
   saveJson(){
     var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.props.colon.projects, null, 2));
-    console.log(data)
     if (this.props.colon.projects.length > 0){
         $( "#download" ).empty();
         $('<a href="data:' + data + '" download="data.json" title="Download all notes as JSON">JSON</a>').appendTo('#download');
@@ -68,7 +59,7 @@ class ColonItem extends Component {
   }
   
   render() {
-   
+
     const colonStyle = {
       heigth: this.props.colon.projects.length
     }
@@ -80,9 +71,6 @@ class ColonItem extends Component {
     const titleStyle = {
       textTransform: "uppercase"
     }    
-
-    //var persistence = JSON.parse(localStorage.getItem('projects')) || [];
-    //projects={persistence}
 
     return (
     <div className="col-md-4" style={colon2Style}>

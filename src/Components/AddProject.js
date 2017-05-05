@@ -10,6 +10,7 @@ class AddProject extends Component {
   }
 
   handleSubmit(e){
+    //console.log(this.state)
     if(this.refs.title.value === ''){
       alert('Title is required');
     } else {

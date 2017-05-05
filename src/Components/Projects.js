@@ -20,6 +20,7 @@ class Projects extends Component {
       projectItems = this.props.projects.map(project => {
         return (
           <ProjectItem onDelete={this.deleteProject.bind(this)} onEdit={this.editNote.bind(this)} key={project.id} project={project} />
+          
         );
       });
     }
