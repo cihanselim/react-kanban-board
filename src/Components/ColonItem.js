@@ -70,7 +70,7 @@ class ColonItem extends Component {
 
     const titleStyle = {
       textTransform: "uppercase"
-    }    
+    }  
 
     return (
     <div className="col-md-4" style={colon2Style}>

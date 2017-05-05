@@ -1,6 +1,5 @@
 //latest project herbir prop
 import React, { Component } from 'react';
-
 class ProjectItem extends Component {
 
   constructor(props){
@@ -101,18 +100,18 @@ class ProjectItem extends Component {
     }
 
     return (
-      <div className="col-md-12">
-        <div className="panel" style={this.state.style[0]}>
-          <div className="panel-heading">
+      <div className="col-md-12" >
+        <div className="panel" style={this.state.style[0]} >
+          <div className="panel-heading" >
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6" >
                 <h4 style={titleStyle}>{this.props.project.title}</h4>
                 <p style={noteStyle}>{this.props.project.category}</p>
               </div>
 
               <div className="col-md-6" >
                 <span className="pull-right">
-                  <a href="#" onClick={this.deleteProject.bind(this, this.props.project.id)}>
+                  <a href="#">
                     <button className="btn btn-default btn-xs" type="submit">
                       <span className="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
                     </button>
