@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import propTypes from 'prop-types'
 
 class AddColon extends Component {
   constructor(){
@@ -7,7 +8,6 @@ class AddColon extends Component {
     this.state = {
       newColon:{}
     }
-
   }
 
   handleSubmit(e){
@@ -17,52 +17,47 @@ class AddColon extends Component {
       this.setState({newColon:{
         colonId: uuid.v4(),
         title: this.refs.title.value,
-        projects: []
+        notes: []
       }}, function(){
         //console.log(this.state);
         this.props.addColon(this.state.newColon);
       });
     }
     e.preventDefault();
-
-    //console.log(this.state.newColon)
   }
-
 
   render() {
     return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <div className="input-group">
-              <input type="text" className="form-control" placeholder="Title Name" ref="title"></input>
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="submit">New Colon!</button>
-              </span>
-            </div>
-          </form>
-        </div>
-
-        <div className="col-md-6">
-          <form>
-            <span className="input-group-btn">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="input-group">
-                <button className="btn btn-default" type="submit">New Note!</button>
+                <input type="text" className="form-control" placeholder="Title Name" ref="title"></input>
+                <span className="input-group-btn">
+                  <button className="btn btn-default" type="submit">New Colon!</button>
+                </span>
               </div>
-            </span>
-          </form>
+            </form>
+          </div>
+          <div className="col-md-6">
+            <form>
+              <span className="input-group-btn">
+                <div className="input-group">
+                  <button className="btn btn-default" type="submit">New Note!</button>
+                </div>
+              </span>
+            </form>
+          </div>
         </div>
-
       </div>
-    </div>
     );
   }
 }
 
 AddColon.propTypes = {
-  categories: React.PropTypes.array,
-  addColon: React.PropTypes.func
+  categories: propTypes.array,
+  addColon: propTypes.func
 }
 
 export default AddColon;

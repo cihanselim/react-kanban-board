@@ -1,17 +1,11 @@
-//Latest Projects
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import ColonItem from './ColonItem';
 
 class Colons extends Component {
+
   deleteColon(colonId){
     this.props.onDelete(colonId);
-  }
-
-  componentWillMount(){
-
-    
-    //console.log(this.props.colons)
-  
   }
 
   render() {
@@ -33,8 +27,8 @@ class Colons extends Component {
 }
 
 Colons.propTypes = {
-  colons: React.PropTypes.array,
-  onDelete: React.PropTypes.func
+  colons: propTypes.array,
+  onDelete: propTypes.func
 }
 
 export default Colons;

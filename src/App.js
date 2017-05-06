@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import uuid from 'uuid';
+import propTypes from 'prop-types'
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
 import Header from './Components/Header'
@@ -17,25 +17,19 @@ class App extends Component {
     for (var i=0;i<persistence.length;i++){
       this.state.colons.push(persistence[i]);
     }
-    
     this.setState({colons: persistence});
-    //console.log(this.state.colons)
   }
 
   componentWillMount(){
     this.getColons();
-  
   }
 
   handleAddColon(colon){
-
     let colons = this.state.colons;
     colons.push(colon);
-    //console.log(colons)
     localStorage.setItem('persistence', JSON.stringify(colons));
     this.setState({colons:colons});
   }
-
 
   handleDeleteColon(colonId){
     let colons = this.state.colons;
@@ -43,14 +37,10 @@ class App extends Component {
     colons.splice(index, 1);
     localStorage.setItem('persistence', JSON.stringify(colons));
     this.setState({colons:colons});
-
   }
 
   render() {
-
-
     return (
-
       <div className="App" >
         <Header />
         <div className="container">
@@ -63,7 +53,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  colon: React.PropTypes.object
+  colon: propTypes.object
 }
 
 export default App;

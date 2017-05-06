@@ -1,7 +1,7 @@
-//latest project herbir prop
 import React, { Component } from 'react';
-import Projects from './Projects';
-import AddProject from './AddProject';
+import propTypes from 'prop-types'
+import Notes from './Notes';
+import AddNote from './AddNote';
 import $ from 'jquery';
 
 class ColonItem extends Component {
@@ -14,54 +14,50 @@ class ColonItem extends Component {
     //console.log(this.props.colon)
   }
 
-  handleAddProject(project){  
-    let projects = this.props.colon.projects;
-    projects.push(project);
+  handleAddNote(note){  
+    let notes = this.props.colon.notes;
+    notes.push(note);
     //localStorage.setItem('persistence', JSON.stringify([this.props.colon]));
-    this.setState({projects:projects});
-    //console.log(localStorage.getItem('persistence', JSON.stringify([colons])))
-    
+    this.setState({notes:notes});
   }
 
-  handleDeleteProject(id){
-    let projects = this.props.colon.projects;
-    let index = projects.findIndex(x => x.id === id);
-    projects.splice(index, 1);
-    this.setState({projects:projects});
+  handleDeleteNote(id){
+    let notes = this.props.colon.notes;
+    let index = notes.findIndex(x => x.id === id);
+    notes.splice(index, 1);
+    this.setState({notes:notes});
   }
 
   handleEditNote(id){
-    let notes = this.props.colon.projects;
+    let notes = this.props.colon.notes;
     let index = notes.findIndex(x => x.id === id);
     var newTitle = prompt("Please enter new title: ", notes[index].title);
     var newNote = prompt("Please enter new note: ", notes[index].category);
     notes[index].title = newTitle
     notes[index].category = newNote
-    this.setState({projects:notes});
+    this.setState({notes:notes});
   }
 
   loadJson(){
-    let projects = this.props.colon.projects;
+    let notes = this.props.colon.notes;
     var json = require('../json/data.json');
-    for (var i=0; i<json.projects.length; i++){
-      projects.push(json.projects[i]);
-      this.setState({projects:projects});
+    for (var i=0; i<json.notes.length; i++){
+      notes.push(json.notes[i]);
+      this.setState({notes:notes});
     }
-
   }
 
   saveJson(){
-    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.props.colon.projects, null, 2));
-    if (this.props.colon.projects.length > 0){
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.props.colon.notes, null, 2));
+    if (this.props.colon.notes.length > 0){
         $( "#download" ).empty();
         $('<a href="data:' + data + '" download="data.json" title="Download all notes as JSON">JSON</a>').appendTo('#download');
     }
   }
   
   render() {
-
     const colonStyle = {
-      heigth: this.props.colon.projects.length
+      heigth: this.props.colon.notes.length
     }
 
     const colon2Style = {
@@ -73,56 +69,52 @@ class ColonItem extends Component {
     }  
 
     return (
-    <div className="col-md-4" style={colon2Style}>
-      <div className="row-fluid">
-        <div className="panel panel-default" >
-          <div className="panel-heading">
-            <div className="row" style={colonStyle}>
-              <div className="col-md-6" >
-                <h4 className="pull-left" style={titleStyle}>{this.props.colon.title}</h4>
+      <div className="col-md-4" style={colon2Style}>
+        <div className="row-fluid">
+          <div className="panel panel-default" >
+            <div className="panel-heading">
+              <div className="row" style={colonStyle}>
+                <div className="col-md-6" >
+                  <h4 className="pull-left" style={titleStyle}>{this.props.colon.title}</h4>
+                </div>
+                <div className="col-md-6">
+                  <span className="pull-right">
+                    <a href="#">
+                      <button className="btn btn-default btn-xs" type="submit" title="Notes">
+                       {this.props.colon.notes.length}
+                      </button>
+                    </a>
+                    <a href="#" id="download">
+                      <button onClick={this.saveJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Download all notes as JSON">
+                       <span className="glyphicon glyphicon-save" aria-hidden="true"></span>
+                      </button>
+                    </a>
+                    <a href="#">
+                      <button onClick={this.loadJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Load JSON">
+                       <span className="glyphicon glyphicon-open" aria-hidden="true"></span>
+                      </button>
+                    </a>
+                    <a href="#" onClick={this.deleteColon.bind(this, this.props.colon.colonId)}>
+                      <button className="btn btn-default btn-xs" type="submit" title="Close">
+                        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </button>
+                    </a>
+                  </span>
+                </div>
+                <Notes notes={this.props.colon.notes} onDelete={this.handleDeleteNote.bind(this)} onEdit={this.handleEditNote.bind(this)} />
+                <AddNote addNote={this.handleAddNote.bind(this)} />
               </div>
-              <div className="col-md-6">
-                <span className="pull-right">
-
-                  <a href="#">
-                    <button className="btn btn-default btn-xs" type="submit" title="Notes">
-                     {this.props.colon.projects.length}
-                    </button>
-                  </a>
-
-                  <a href="#" id="download">
-                    <button onClick={this.saveJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Download all notes as JSON">
-                     <span className="glyphicon glyphicon-save" aria-hidden="true"></span>
-                    </button>
-                  </a>
-
-                  <a href="#">
-                    <button onClick={this.loadJson.bind(this)} className="btn btn-default btn-xs" type="submit" title="Load JSON">
-                     <span className="glyphicon glyphicon-open" aria-hidden="true"></span>
-                    </button>
-                  </a>
-                  
-                  <a href="#" onClick={this.deleteColon.bind(this, this.props.colon.colonId)}>
-                    <button className="btn btn-default btn-xs" type="submit" title="Close">
-                      <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                  </a>
-                </span>
-              </div>
-              <Projects projects={this.props.colon.projects} onDelete={this.handleDeleteProject.bind(this)} onEdit={this.handleEditNote.bind(this)} />
-              <AddProject addProject={this.handleAddProject.bind(this)} />
             </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }
 
 ColonItem.propTypes = {
-  colon: React.PropTypes.object,
-  onDelete: React.PropTypes.func
+  colon: propTypes.object,
+  onDelete: propTypes.func
 }
 
 export default ColonItem;
