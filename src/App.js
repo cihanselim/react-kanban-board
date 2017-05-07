@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 import propTypes from 'prop-types'
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
@@ -8,7 +9,16 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      colons: []
+      colons: [{
+                colonId: uuid.v4(),
+                title: "TODO",
+                notes: []
+              },
+              {
+                colonId: uuid.v4(),
+                title: "DONE",
+                notes: []
+              }]
     }
   }
 

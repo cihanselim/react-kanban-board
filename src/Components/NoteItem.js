@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import dragula from 'dragula';
 
 class NoteItem extends Component {
 
@@ -94,11 +93,8 @@ class NoteItem extends Component {
       marginTop: "5px"
     }
 
-    var container = document.getElementById("container")
-    dragula([container]);
-
     return (
-      <div className="col-md-12" id="container">
+      <div className="col-md-12">
         <div className="panel" style={this.state.style[0]} >
           <div className="panel-heading" >
             <div className="row">

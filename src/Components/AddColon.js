@@ -19,7 +19,6 @@ class AddColon extends Component {
         title: this.refs.title.value,
         notes: []
       }}, function(){
-        //console.log(this.state);
         this.props.addColon(this.state.newColon);
       });
     }
