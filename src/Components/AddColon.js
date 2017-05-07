@@ -26,10 +26,15 @@ class AddColon extends Component {
   }
 
   render() {
+
+    const addColonStyle = {
+      marginBottom: "20px",
+      marginTop: "20px",
+    }
     return (
-      <div className="container">
+      <div className="container" style={addColonStyle}>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 col-md-offset-3">
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="input-group">
                 <input type="text" className="form-control" placeholder="Title Name" ref="title"></input>
@@ -37,15 +42,6 @@ class AddColon extends Component {
                   <button className="btn btn-default" type="submit">New Colon!</button>
                 </span>
               </div>
-            </form>
-          </div>
-          <div className="col-md-6">
-            <form>
-              <span className="input-group-btn">
-                <div className="input-group">
-                  <button className="btn btn-default" type="submit">New Note!</button>
-                </div>
-              </span>
             </form>
           </div>
         </div>

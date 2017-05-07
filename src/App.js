@@ -3,7 +3,8 @@ import uuid from 'uuid';
 import propTypes from 'prop-types'
 import Colons from './Components/Colons';
 import AddColon from './Components/AddColon';
-import Header from './Components/Header'
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 class App extends Component {
   constructor(){
@@ -57,7 +58,9 @@ class App extends Component {
         <AddColon addColon={this.handleAddColon.bind(this)}/>
         <Colons colons={this.state.colons} onDelete={this.handleDeleteColon.bind(this)} />
         </div>
+        <Footer />
       </div>
+
     );
   }
 }

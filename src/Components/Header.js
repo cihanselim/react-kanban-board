@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 class Header extends Component {
 
   render() {
-
     const headerStyle = {
-      color: "gray"
+      color: "black",
+      textAlign: "center",
+      fontFamily: 'Titillium Web',
+      marginBottom: "20px"
     }
 
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
-          <div className="navbar-header">
-              <h2 style={headerStyle}>Kanban Board</h2>
-          </div>
+          <h2 style={headerStyle}>- Kanban Board -</h2>
         </div>
       </nav>
     );

@@ -30,7 +30,7 @@ class NoteItem extends Component {
     var labelName = prompt("Label name: ")
     this.setState({
       style: [{
-        backgroundColor: '#E57373',
+        backgroundColor: '#EF9A9A',
         labelName: labelName,
         labelColor: 'Red'
       }]
@@ -42,7 +42,7 @@ class NoteItem extends Component {
     var labelName = prompt("Label name: ")
     this.setState({
       style: [{
-        backgroundColor: '#82B1FF',
+        backgroundColor: '#BBDEFB',
         labelName: labelName,
         labelColor: 'Blue'
       }]
@@ -75,17 +75,18 @@ class NoteItem extends Component {
 
     const titleStyle = {
       textTransform: "uppercase",
-      display: "block",
-      textOverflow: "ellipsis",
-      lineHeight: "16px",
-      width: "100px"
+      overflow: "hidden",
+      display: "-webkit-box",
+      WebkitLineClamp: "3",
+      WebkitBoxOrient: "vertical",
+      width: "200px"
     }
 
     const noteStyle = {
-      display: "block",
-      textOverflow: "ellipsis",
-      lineHeight: "16px",
-      width: "200px"
+      overflow: "hidden",
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      width: "270px"
    
     }
 
@@ -104,11 +105,7 @@ class NoteItem extends Component {
               </div>
               <div className="col-md-6" >
                 <span className="pull-right">
-                  <a href="#">
-                    <button className="btn btn-default btn-xs" type="submit" >
-                      <span className="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
-                    </button>
-                  </a>
+           
                   <a href="#" onClick={this.editNote.bind(this, this.props.note.id)}>
                     <button className="btn btn-default btn-xs" type="submit">
                       <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
