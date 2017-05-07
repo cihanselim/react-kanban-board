@@ -14,6 +14,7 @@ npm start
 - [x] Show number of notes
 - [x] Edit & Delete notes
 - [x] Assign labels to the notes
+- [x] Colored labels
 - [x] Local Storage
 - [x] Import & Export JSON
 - [ ] Drag & Drop
