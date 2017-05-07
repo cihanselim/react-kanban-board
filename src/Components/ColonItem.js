@@ -10,14 +10,9 @@ class ColonItem extends Component {
     this.props.onDelete(colonId);
   }
 
-  componentWillMount(){
-    //console.log(this.props.colon)
-  }
-
   handleAddNote(note){  
     let notes = this.props.colon.notes;
     notes.push(note);
-    //localStorage.setItem('persistence', JSON.stringify([this.props.colon]));
     this.setState({notes:notes});
   }
 

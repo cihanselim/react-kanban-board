@@ -72,22 +72,15 @@ class NoteItem extends Component {
   }
 
   render() {
-
     const titleStyle = {
       textTransform: "uppercase",
-      overflow: "hidden",
-      display: "-webkit-box",
-      WebkitLineClamp: "3",
-      WebkitBoxOrient: "vertical",
-      width: "200px"
+      width: "200px",
+      wordWrap:"break-word"
     }
 
     const noteStyle = {
-      overflow: "hidden",
-      display: "-webkit-box",
-      WebkitBoxOrient: "vertical",
-      width: "270px"
-   
+      width: "280px",
+      wordWrap:"break-word"
     }
 
     const labelInfoStyle = {
