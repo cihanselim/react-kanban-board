@@ -1,7 +1,10 @@
 # Kanban Board with ReactJS
 
-![DEMO](pngs/main.png)
+* [What is a Kanban Board ?](https://leankit.com/learn/kanban/kanban-board/)
 
+---
+
+![DEMO](pngs/main.png)
 
 ## Installation
 ```
