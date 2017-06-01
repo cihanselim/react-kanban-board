@@ -4,7 +4,7 @@
 
 ---
 
-![DEMO](pngs/main.png)
+![mainpng](pngs/main.png)
 
 ## Installation
 ```
