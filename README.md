@@ -1,4 +1,4 @@
-# Kanban Board with ReactJS
+<h1 align="center"><img src="http://r67.cooltext.com/rendered/cooltext247863927772782.png"></img></h1>
 
 * [What is a Kanban Board ?](https://leankit.com/learn/kanban/kanban-board/)
 
