@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #f9f9f9;
+}
+
+h1, h2, h3, h4, p {
+  margin-bottom: 0 !important;
+}
+
+.ant-card {
+  margin-top: 4px !important;
+  border-radius: 0 !important;
+
+  .ant-card-body {
+    padding: 12px 18px;
+  }
+}
+
+.mh-100 {
+  max-height: 100px;
+  overflow-y: scroll;
+  margin-bottom: 0 !important;
+}
+
+.ant-card-actions > li {
+  margin: 8px 0 !important;
+
+  span {
+    font-size: 12px !important;
+  }
+}
+
+.description {
+  text-transform: capitalize;
+}
